@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e6eee15-2d2a-48ae-9d30-4ea9d71a3140" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1Y7dHIMYAWs39ozt2wHVcBeEUz4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/statics" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ACER\PycharmProjects\RecLetter\statics" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e6eee15-2d2a-48ae-9d30-4ea9d71a3140" name="Default Changelist" comment="" />
+      <created>1582297477088</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582297477088</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1582297828210">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582297828210" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1583573288978">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583573288978" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1582349149195">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582349149195" />
+  </component>
+</project>
