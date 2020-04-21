@@ -1,0 +1,40 @@
+{% block content %}
+  <style>
+    body{
+      margin: 0px;
+    }
+    .navbar{
+      padding: 10px;
+      height:50px;
+      background-color: rgb(237, 231, 246);
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      box-shadow: 0px 10px 10px rgba(237, 231, 246, .9);
+    }
+    .image{
+      height: 50px;
+      width: 50px;
+      background-color: red;
+      backgroung-image: url('https://img.icons8.com/bubbles/2x/admin-settings-male.png');
+    }
+  </style>
+
+
+  <div class='navbar'>
+    <div style='display:flex; align-items: center'>
+      <div class='image' style='margin-right: 20px'></div>
+      <h3>Welcome, {{request.user}}</h3>
+    </div>
+  <a href="{% url 'logout' %}" class='btn btn-primary'>Logout</a>
+  </div>
+  <div class='main-body'>
+    <div class='table-div'>
+
+    </div>
+    <div class='details-div'>
+
+    </div>
+
+  </div>
+{% endblock %}

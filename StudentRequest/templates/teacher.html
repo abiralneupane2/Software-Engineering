@@ -1,10 +1,32 @@
-{% extends './base.html' %}
 {% block content %}
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-crossorigin="anonymous"></script>'
+crossorigin="anonymous"></script>
 
 <!-- Style for modal -->
 <style>
+  body{
+    margin: 0px;
+  }
+  .tr:hover{
+    background-color: red;
+  }
+  .navbar{
+    padding: 10px;
+    height:30px;
+    background-color: rgb(237, 231, 246);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 10px 10px rgba(237, 231, 246, .9);
+    margin-bottom: 10px;
+  }
+  .image{
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    backgroung-image: url('https://img.icons8.com/bubbles/2x/admin-settings-male.png');
+  }
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -44,6 +66,23 @@ crossorigin="anonymous"></script>'
 
 </style>
 
+<div class='navbar'>
+  <div style='display:flex; align-items: center'>
+    <div class='image' style='margin-right: 20px'></div>
+    <h3>Welcome, {{request.user}}</h3>
+  </div>
+<a href="{% url 'logout' %}" class='logout-btn'>Logout</a>
+</div>
+<div class='main-body'>
+  <div class='table-div'>
+
+  </div>
+  <div class='details-div'>
+
+  </div>
+
+</div>
+
 <!-- --------------------- -->
 
 <!-- The modal -->
@@ -71,19 +110,18 @@ crossorigin="anonymous"></script>'
 
 <!-- Filter select options and button -->
 
-<select class="form-control" id='filter'>
+<!-- <select class="form-control" id='filter'>
   <option selected='selected'>All</option>
   {% for mdepartment in department %}
     <option>{{mdepartment.department_name}}</option>
   {%endfor%}
 </select>
-<button class="btn btn-dark" id='filterbtn'>Filter</button>
+<button class="btn btn-dark" id='filterbtn'>Filter</button> -->
 
 <!-- ------------------- -->
 
 
-<h3>Welcome {{request.user}} <a href="{% url 'logout' %}" class='btn btn-primary'>Logout</a></h3>
-  <p> <p>
+
 
 
 
@@ -95,7 +133,7 @@ crossorigin="anonymous"></script>'
 
   </tr>
   {% for mstudent in students %}
-    <tr id='{{ mstudent.id }}'>
+    <tr class='tr' id='{{ mstudent.id }}'>
       <td>{{mstudent}}</td>
       <td>{{mstudent.department.department_name}}</td>
       <td><button class='btn btn-primary viewButton'>View</button>
@@ -116,9 +154,7 @@ crossorigin="anonymous"></script>'
       id=$(this).parent().parent().attr('id');
       id=parseInt(id)
       console.log(id);
-      console.log("{% for mstudent in students %}
-        {{mstudent.id}}
-        {%endfor%}");
+      console.log(".");
       modal.css('display','block');
   })
 
