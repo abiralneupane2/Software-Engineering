@@ -1,7 +1,10 @@
 {% block content %}
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous">
+</script>
 
 <!-- Style for modal -->
 <style>
@@ -73,15 +76,7 @@ crossorigin="anonymous"></script>
   </div>
 <a href="{% url 'logout' %}" class='logout-btn'>Logout</a>
 </div>
-<div class='main-body'>
-  <div class='table-div'>
 
-  </div>
-  <div class='details-div'>
-
-  </div>
-
-</div>
 
 <!-- --------------------- -->
 
@@ -144,7 +139,7 @@ crossorigin="anonymous"></script>
 
 
 <script>
-  var modal = $('#detailsModal')
+  const modal = $('#detailsModal')
 
   $('.close').click(function(e){
       modal.css('display', 'none');
@@ -153,22 +148,35 @@ crossorigin="anonymous"></script>
   $('.viewButton').click(function(e){
       id=$(this).parent().parent().attr('id');
       id=parseInt(id)
-      console.log(id);
-      console.log(".");
-      modal.css('display','block');
+      $.ajax({
+        url: 'generate/',
+        type: 'GET',
+        data: {
+          'id': id,
+        },
+        dataType: 'json',
+        success: function (res) {
+          modal.css('display','block')
+          $('.modal-content > p').text(res.name)
+        }
+      })
+
   })
 
 
   $('.generateButton').click(function (e) {
     id = $(this).prev().parent().parent().attr('id');
+    id=parseInt(id)
     $.ajax({
-      url: "{% url 'generate' %}",
+      url: 'generate/',
       type: 'GET',
       data: {
-        'id': id
+        'id': id,
       },
-      success: function (data) {
-        $('#editor').css('display','block');
+      dataType: 'json',
+      success: function (res) {
+        modal.css('display','block')
+        $('.modal-content > p').text(res.name)
       }
     })
   })

@@ -45,7 +45,6 @@ def loginPage(request):
 
 @login_required(login_url='login')
 def teacher(request, dept='All'):
-    print(dept)
     students=models.student_data.object.all()
     department=models.department.object.all()
     context={
@@ -63,9 +62,12 @@ def generate(request):
         id=int(request.GET.get('id'))
         student=models.student_data.object.get(id=id)
         context={
-            'first_name': student.first_name,
-            'last_name': student.last_name,
-            }
+            'name': student.name,
+            'department': student.department.department_name,
+            'email': student.email,
+        }
+        return JsonResponse(context);
+
 
 def success(request):
     return HttpResponse("<h1>success</h1>")

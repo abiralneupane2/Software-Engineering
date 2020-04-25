@@ -9,7 +9,7 @@ urlpatterns = (
     path('teacher/<str:dept>', views.teacher),
     path('login/', views.loginPage, name='login'),
     path('logout/', views.logoutuser, name='logout'),
-    path('generate/', views.generate, name='generate'),
+    path('teacher/generate/', views.generate, name='generate'),
 
 
 )
