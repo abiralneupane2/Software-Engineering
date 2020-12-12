@@ -13,18 +13,18 @@ def index(request):
     if request.method == 'POST':
         form = forms.FormClass(request.POST)
         if form.is_valid():
-            # name = forms.cleaned_data['name']
-            # email = forms.cleaned_data['email']
-            # address = forms.cleaned_data['address']
-            # phone_number = forms.cleaned_data['phone_number']
-            # department = forms.cleaned_data['department']
-            # teacher_name = forms.cleaned_data['teacher_name']
-            # aggregate_percentage = forms.cleaned_data['aggregate_percentage']
-            # project_details = forms.cleaned_data['project_details']
-            # publication_details = forms.cleaned_data['publication_details']
-            # eca_details = forms.cleaned_data['eca_details']
-            # university_to_address = forms.cleaned_data['university_to_address']
-            # # deadline = forms.cleaned_data['deadline']
+            # name = form.cleaned_data['name']
+            # email = form.cleaned_data['email']
+            # address = form.cleaned_data['address']
+            # phone_number = form.cleaned_data['phone_number']
+            # department = form.cleaned_data['department']
+            # teacher_name = form.cleaned_data['teacher_name']
+            # aggregate_percentage = form.cleaned_data['aggregate_percentage']
+            # project_details = form.cleaned_data['project_details']
+            # publication_details = form.cleaned_data['publication_details']
+            # eca_details = form.cleaned_data['eca_details']
+            # university_to_address = form.cleaned_data['university_to_address']
+            # deadline = form.cleaned_data['deadline']
             # print(name, email, address, phone_number, department, teacher_name, aggregate_percentage, project_details,
             #       publication_details, eca_details, university_to_address)
             form.save()
@@ -41,33 +41,42 @@ def loginPage(request):
             return redirect('teacher')
         else:
             return render(request, 'login.html')
-    return render(request, 'login.html')
+    return render(request,'login.html')
+    
+
 
 @login_required(login_url='login')
 def teacher(request, dept='All'):
-    students=models.student_data.object.all()
-    department=models.department.object.all()
-    context={
-        'students':students,
-        'department':department
+    mstudent = models.Requests.object.all()
+    print(request.user)
+    context = {
+        "mstudent":mstudent
     }
-    return render(request, 'teacher.html',context)
+    return render(request, 'teacher.html', context)
+    
 
 def logoutuser(request):
     logout(request)
     return redirect('login')
 
-def generate(request):
+
+@login_required(login_url='login')
+def returnLetter(request):
     if(request.is_ajax):
         id=int(request.GET.get('id'))
-        student=models.student_data.object.get(id=id)
+        student=models.Requests.object.get(id=id)
         context={
             'name': student.name,
-            'department': student.department.department_name,
+            'department': student.department,
             'email': student.email,
+            'deadline': student.deadline
         }
-        return JsonResponse(context);
+        return JsonResponse(context)
 
 
 def success(request):
     return HttpResponse("<h1>success</h1>")
+
+
+def test(request):
+    return render(request, 'datepicker.html', {})

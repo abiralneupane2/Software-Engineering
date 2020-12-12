@@ -3,13 +3,20 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 <form method="POST">
     {% csrf_token %}
     {{ forms|crispy }}
-    <button type="submit" class="btn btn-primary">Request</button>
+    <input id="datepicker" name="deadline" width="276" />
+    <p></p>
+    <button type="submit" class="btn btn-danger">Request</button>
 </form>
-<div class="md-form">
-<input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
-<label for="date-picker-example">Try me...</label>
-</div>
+
+<script>
+  $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+</script>
 {% endblock %}

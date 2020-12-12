@@ -5,21 +5,22 @@ from django import forms
 
 
 
-class department(models.Model):
-    department_name=models.CharField(max_length=50)
-    object=models.Manager()
+DEPARTMENTS = [
+    ('FR', 'Freshman'),
+    ('SO', 'Sophomore'),
+    ('JR', 'Junior'),
+    ('SR', 'Senior'),
+    ('GR', 'Graduate'),
+]
 
-    def __str__(self):
-        return self.department_name
 
-
-class student_data(models.Model):
+class Requests(models.Model):
     name = models.CharField(max_length=20)
     email = models.EmailField(max_length=100)
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(null=True)
-    department = models.ForeignKey(department, on_delete=models.CASCADE)
-    #teacher_name = forms.ChoiceField(choices=DEPARTMENTS)
+    department = models.CharField(choices=DEPARTMENTS, max_length=2)
+    teacher_name = models.ForeignKey(User, on_delete=models.CASCADE)
     aggregate_percentage = models.IntegerField()
     project_details = models.CharField(max_length=1000, null=True)
     publication_details = models.CharField(max_length=1000, null=True)
@@ -30,3 +31,4 @@ class student_data(models.Model):
 
     def __str__(self):
         return self.name
+
